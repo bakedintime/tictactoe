@@ -1,0 +1,16 @@
+{
+  "name": "tictactoe",
+  "version": "0.0.1",
+  "description": "Tictactoe on angularjs",
+  "main": "server.js",
+  "dependencies": {
+    "serve-static": "~1.9.2",
+    "connect": "~3.3.5"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Joel Cantoral",
+  "license": "MIT"
+}
