@@ -1,0 +1,28 @@
+<div class="row" style="{{notifications['oneWinner']}}">
+  <div class="col s12">
+    <div class="card blue-grey darken-1">
+      <div class="card-content white-text center-align">
+        <span class="card-title">Congratulations!</span>
+        <p><i class="large mdi-action-star-rate"></i></p>
+        <p>This match's winner piece is: {{ currentPlayer }}</p>
+      </div>
+      <div class="card-action">
+        <a ng-click="init()" href="#">Play again</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row" style="{{notifications['noWinner']}}">
+  <div class="col s12">
+    <div class="card blue-grey darken-1">
+      <div class="card-content white-text center-align">
+        <span class="card-title">Too Bad...</span>
+        <p><i class="large mdi-image-rotate-left"></i></p>
+        <p>There were no winners for this game. How about you give it another try?</p>
+      </div>
+      <div class="card-action">
+        <a ng-click="init()" href="#">Play again</a>
+      </div>
+    </div>
+  </div>
+</div>
