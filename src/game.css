@@ -10,3 +10,12 @@
 .page-footer .row{
     margin-bottom:0;
 }
+.collapsible{
+    margin-top: 0;
+}
+.collapsible-header{
+    color: #fff;
+}
+.pull-left{
+    float:left;
+}

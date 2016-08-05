@@ -1,6 +1,38 @@
 // Joel Cantoral, 2015
 // Module definition
 var game = angular.module('game', []);
+// Directive that creates the board
+game.directive('gameBoard', function () {
+    return {
+        restrict: 'E',
+        scope: false,
+        templateUrl: 'templates/gameBoard.html'
+    };
+})
+// Directive that holds the notifications' cards
+.directive('notifications', function(){
+    return {
+        restrict: 'E',
+        scope: false,
+        templateUrl: 'templates/notifications.html'
+    };
+})
+// Directive that holds the instructions
+.directive('instructions', function(){
+    return {
+        restrict: 'E',
+        scope: false,
+        templateUrl: 'templates/instructions.html',
+        link: function(scope, elem, attrs, ctrl){
+            var collapsable = $(elem[0]).children('.collapsible');
+            // Display instructions
+            collapsable.collapsible({
+                // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+                accordion : false
+            });
+        }
+    };
+});
 game.controller('MainCtrl', function ($scope, GameState) {
     /**
         Marks a box with the current player's piece.
@@ -19,12 +51,12 @@ game.controller('MainCtrl', function ($scope, GameState) {
 
             if (hasWon){
                 // Show winner's notification card
-                $scope.notifications['oneWinner']='display:block';
+                $scope.notifications.oneWinner='display:block';
             }else{
                 // If all boxes are marked and there is no winner
                 // show a notification's card to show the game is finished
                 if($.inArray(0, $scope.currentState) === -1){
-                    $scope.notifications['noWinner']='display:block';
+                    $scope.notifications.noWinner='display:block';
                 }
             }
             $scope.currentPlayer = GameState.getCurrentPlayer();
@@ -67,9 +99,7 @@ game.controller('MainCtrl', function ($scope, GameState) {
     // Init game
     $scope.init();
 });
-// Define our first service; Posts
-// This service simply uses the built-in $http service to retrieve data from
-// a static JSON store.
+// Defines the current state of the game
 game.service('GameState', function ($http) {
     // Initial state of the game
     this.boxes = [0,0,0,0,0,0,0,0,0];
@@ -119,22 +149,5 @@ game.service('GameState', function ($http) {
     this.clearGame = function(){
         this.boxes = [0,0,0,0,0,0,0,0,0];
         this.currentPlayer = 'o';
-    };
-});
-
-// Directive that creates the board
-game.directive('gameBoard', function () {
-    return {
-        restrict: 'E',
-        scope: false,
-        templateUrl: 'gameBoard.html'
-    };
-})
-// Directive that holds the notifications' cards
-.directive('notifications', function(){
-    return {
-        restrict: 'E',
-        scope: false,
-        templateUrl: 'notifications.html'
     };
 });
