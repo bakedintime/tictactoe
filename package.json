@@ -26,6 +26,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "engines" : {
+    "node" : "7.10.1"
+  },
   "author": "Joel Cantoral",
   "license": "MIT"
 }
